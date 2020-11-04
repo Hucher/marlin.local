@@ -39,15 +39,21 @@ session_start();
                 <div class="panel-content">
                     <div class="panel-content">
                         <div class="form-group">
-                            <?php if (!empty($_SESSION['message'])):?>
-                            <div class="alert alert-danger fade show" role="alert">
-                                <?=$_SESSION['message']; ?>
-                            </div>
-                                <?php session_destroy();?>
-                            <?php endif;?>
+                            <?php if (!empty($_SESSION['danger'])): ?>
+                                <div class="alert alert-danger fade show" role="alert">
+                                    <?= $_SESSION['danger']; session_destroy();?>
+                                </div>
+                            <?php endif; ?>
+                            <?php if (!empty($_SESSION['success'])): ?>
+                                <div class="alert alert-success fade show" role="alert">
+                                    <?= $_SESSION['success']; session_destroy();?>
+                                </div>
+                            <?php endif; ?>
                             <form action="save_10.php" method="post">
                                 <label class="form-label" for="simpleinput">Title</label>
                                 <input type="text" id="simpleinput" class="form-control" name="title">
+                                <label class="form-label" for="simpleinput">Description</label>
+                                <input type="text" id="simpleinput" class="form-control" name="description">
                                 <button class="btn btn-success mt-3" type="submit">Submit</button>
                             </form>
                         </div>
